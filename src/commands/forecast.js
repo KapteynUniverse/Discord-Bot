@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { fetchForecast } from "../requests/forecast.js";
 
 export const data = new SlashCommandBuilder()
@@ -28,10 +28,26 @@ export async function execute(interaction) {
     const { locationName, weatherData } = forecast;
 
     const formatted = weatherData
-      .map((day) => `📅 ${day.date} — 🌡️ ${day.maxTemp}°C / ${day.minTemp}°C`)
-      .join("\n");
+      .map((day) => `📅 ${day.date}\n🌡️ ${day.maxTemp}°C / ${day.minTemp}°C`)
+      .join("\n\n");
 
-    await interaction.editReply(`🌍 **${locationName}**\n\n${formatted}`);
+    const embed = new EmbedBuilder()
+      .setColor(0x3f704d)
+      .setTitle(`🌤️ Forecast for ${locationName}`)
+      .setTimestamp()
+      .setFooter({ text: "Powered by WeatherAPI" });
+
+    embed.addFields(
+      ...weatherData.map((day) => ({
+        name: day.date,
+        value: `🌡️ ${day.maxTemp}°C / ${day.minTemp}°C`,
+        inline: true,
+      })),
+    );
+
+    await interaction.editReply({
+      embeds: [embed],
+    });
   } catch (error) {
     console.error(error);
     await interaction.editReply("❌ Something went wrong.");
