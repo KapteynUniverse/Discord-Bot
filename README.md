@@ -15,13 +15,13 @@ A Discord bot built with Discord.js v14 that provides weather forecasts and astr
 
 ---
 
-## 🚀 Features
+## Features
 
 🌦️ 7-day weather forecast • 🌍 Location search • 🌅 Sunrise & sunset • 🌙 Moonrise & moonset • 📊 Embeds • ⚡ Slash commands
 
 ---
 
-## 📦 Commands
+## Commands
 
 Users can use the following Discord slash commands:
 
@@ -30,13 +30,13 @@ Users can use the following Discord slash commands:
 
 ---
 
-## 🧠 Tech Stack
+## Tech Stack
 
 Node.js • Discord.js v14 • WeatherAPI • Express • dotenv
 
 ---
 
-## ⚙️ Setup
+## Setup
 
 ```bash
 1. git clone https://github.com/KapteynUniverse/Discord-Bot
@@ -50,7 +50,7 @@ Node.js • Discord.js v14 • WeatherAPI • Express • dotenv
 5. npm start
 ```
 
-## 🤖 Discord Bot Setup
+## Discord Bot Setup
 
 Before running the project, you need to create a Discord bot and add it to your server.
 
@@ -102,7 +102,7 @@ In the Bot tab:
 npm start
 ```
 
-## 📁 Structure
+## Structure
 ```
 src/
  ├── commands (forecast, astro)
@@ -110,9 +110,9 @@ src/
  ├── requests (forecast API)
 ```
 
-## 🌍 API
+## API
 [WeatherAPI](https://www.weatherapi.com/)
 [Discord](https://discord.js.org/)
 
-## 🧑‍💻 Author
+## Author
 Asilcan Toper
