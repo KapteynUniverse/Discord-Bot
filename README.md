@@ -103,10 +103,12 @@ npm start
 ```
 
 ## 📁 Structure
+```
 src/
  ├── commands (forecast, astro)
  ├── events (clientReady, interactionCreate)
  ├── requests (forecast API)
+```
 
 ## 🌍 API
 [WeatherAPI](https://www.weatherapi.com/)
