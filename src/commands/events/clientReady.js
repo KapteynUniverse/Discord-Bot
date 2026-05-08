@@ -14,7 +14,7 @@ export default async function clientReadyHandler(client) {
         process.env.DISCORD_GUILD_ID,
       ),
       {
-        body: commands,
+        body: [...client.commands.values()].map((cmd) => cmd.data.toJSON()),
       },
     );
 

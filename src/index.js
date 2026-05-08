@@ -19,14 +19,13 @@ app.listen(port, () => {
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
-client.once(Events.ClientReady, clientReadyHandler);
-
-client.on(Events.InteractionCreate, interactionCreateHandler);
 
 client.commands = new Collection();
 
+// register commands FIRST
 client.commands.set(ping.data.name, ping);
 
-new Collection();
+client.once(Events.ClientReady, clientReadyHandler);
+client.on(Events.InteractionCreate, interactionCreateHandler);
 
 client.login(process.env.DISCORD_TOKEN);
