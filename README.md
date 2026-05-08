@@ -100,7 +100,7 @@ In the Bot tab:
 
 ```bash
 npm start
-
+```
 
 ## 📁 Structure
 src/
@@ -114,4 +114,3 @@ src/
 
 ## 🧑‍💻 Author
 Asilcan Toper
-```
