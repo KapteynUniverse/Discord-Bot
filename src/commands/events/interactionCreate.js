@@ -1,5 +1,6 @@
 export default async function interactionCreateHandler(interaction) {
   if (!interaction.isChatInputCommand()) return;
+
   const command = interaction.client.commands.get(interaction.commandName);
   if (!command) return;
 
@@ -7,9 +8,17 @@ export default async function interactionCreateHandler(interaction) {
     await command.execute(interaction);
   } catch (error) {
     console.error(error);
-    interaction.reply({
-      content: "There was an error while executing this command!",
-      ephemeral: true,
-    });
+
+    if (interaction.replied || interaction.deferred) {
+      await interaction.followUp({
+        content: "There was an error while executing this command!",
+        flags: 64,
+      });
+    } else {
+      await interaction.reply({
+        content: "There was an error while executing this command!",
+        flags: 64,
+      });
+    }
   }
 }
