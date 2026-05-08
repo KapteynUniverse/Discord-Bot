@@ -22,7 +22,6 @@ const client = new Client({
 
 client.commands = new Collection();
 
-// register commands FIRST
 client.commands.set(ping.data.name, ping);
 
 client.once(Events.ClientReady, clientReadyHandler);
