@@ -5,7 +5,6 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
 export default async function clientReadyHandler(client) {
   console.log(`Logged in as ${client.user.tag}!`);
-  console.log(await fetchForecast("London"));
 
   try {
     console.log(`Started refreshing ${client.commands.size} commands!`);
