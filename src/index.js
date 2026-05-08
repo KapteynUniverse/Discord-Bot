@@ -1,6 +1,7 @@
 import { Client, Collection, Events, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
 import clientReadyHandler from "./commands/events/clientReady.js";
+import interactionCreateHandler from "./commands/events/interactionCreate.js";
 import * as ping from "./commands/ping.js";
 import express from "express";
 
@@ -18,7 +19,9 @@ app.listen(port, () => {
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
 });
-client.on(Events.ClientReady, clientReadyHandler);
+client.once(Events.ClientReady, clientReadyHandler);
+
+client.on(Events.InteractionCreate, interactionCreateHandler);
 
 client.commands = new Collection();
 
