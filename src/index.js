@@ -1,7 +1,7 @@
 import { Client, Collection, Events, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
 import clientReadyHandler from "./commands/events/clientReady.js";
-import { data } from "./commands/ping.js";
+import * as ping from "./commands/ping.js";
 import express from "express";
 
 const app = express();
@@ -22,7 +22,7 @@ client.on(Events.ClientReady, clientReadyHandler);
 
 client.commands = new Collection();
 
-client.commands.set(data.name, data.description);
+client.commands.set(ping.data.name, ping);
 
 new Collection();
 
