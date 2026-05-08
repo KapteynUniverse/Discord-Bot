@@ -14,10 +14,9 @@ export const data = new SlashCommandBuilder()
   );
 
 export async function execute(interaction) {
+  await interaction.deferReply();
+  const location = interaction.options.getString("location");
   try {
-    await interaction.deferReply();
-    const location = interaction.options.getString("location");
-
     const forecast = await fetchForecast(location);
 
     if (!forecast) {
