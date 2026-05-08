@@ -2,8 +2,8 @@ import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { fetchForecast } from "../requests/forecast.js";
 
 export const data = new SlashCommandBuilder()
-  .setName("forecast")
-  .setDescription("Replies with forecast!")
+  .setName("astro")
+  .setDescription("Replies with astronomical information for the day!")
   .addStringOption((option) =>
     option
       .setName("location")
@@ -14,10 +14,9 @@ export const data = new SlashCommandBuilder()
   );
 
 export async function execute(interaction) {
+  await interaction.deferReply();
+  const location = interaction.options.getString("location");
   try {
-    await interaction.deferReply();
-    const location = interaction.options.getString("location");
-
     const forecast = await fetchForecast(location);
 
     if (!forecast) {
@@ -28,14 +27,14 @@ export async function execute(interaction) {
 
     const embed = new EmbedBuilder()
       .setColor(0x3f704d)
-      .setTitle(`🌤️ Forecast for ${locationName}`)
+      .setTitle(`⭐ Astronomical forecast for ${locationName}`)
       .setTimestamp()
       .setFooter({ text: "Powered by WeatherAPI" });
 
     embed.addFields(
       ...weatherData.slice(0, 7).map((day) => ({
         name: day.date,
-        value: `🌡️ ${day.maxTemp}°C / ${day.minTemp}°C`,
+        value: `🌅 Sunrise: ${day.sunriseTime} \n 🌇 Sunset: ${day.sunsetTime} \n 🌕 Moonrise: ${day.moonriseTime} \n 🌙 Moonset: ${day.moonsetTime}`,
       })),
     );
 

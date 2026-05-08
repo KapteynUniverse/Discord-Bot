@@ -4,6 +4,7 @@ import clientReadyHandler from "./events/clientReady.js";
 import interactionCreateHandler from "./events/interactionCreate.js";
 import * as ping from "./commands/ping.js";
 import * as forecast from "./commands/forecast.js";
+import * as astro from "./commands/astro.js";
 import express from "express";
 
 const app = express();
@@ -25,6 +26,7 @@ client.commands = new Collection();
 
 client.commands.set(ping.data.name, ping);
 client.commands.set(forecast.data.name, forecast);
+client.commands.set(astro.data.name, astro);
 
 client.once(Events.ClientReady, clientReadyHandler);
 client.on(Events.InteractionCreate, interactionCreateHandler);

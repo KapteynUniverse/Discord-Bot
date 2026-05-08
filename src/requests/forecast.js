@@ -21,6 +21,11 @@ export async function fetchForecast(location) {
       date: day.date,
       maxTemp: day.day.maxtemp_c,
       minTemp: day.day.mintemp_c,
+
+      sunriseTime: day.astro.sunrise,
+      sunsetTime: day.astro.sunset,
+      moonriseTime: day.astro.moonrise,
+      moonsetTime: day.astro.moonset,
     }));
 
     return { locationName, weatherData };
