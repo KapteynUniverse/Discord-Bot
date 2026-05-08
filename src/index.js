@@ -1,4 +1,4 @@
-import { Client, Events, GatewayIntentBits } from "discord.js";
+import { Client, Collection, Events, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
 import clientReadyHandler from "./commands/events/clientReady.js";
 
