@@ -1,7 +1,7 @@
 import { Client, Collection, Events, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
-import clientReadyHandler from "./commands/events/clientReady.js";
-import interactionCreateHandler from "./commands/events/interactionCreate.js";
+import clientReadyHandler from "./events/clientReady.js";
+import interactionCreateHandler from "./events/interactionCreate.js";
 import * as ping from "./commands/ping.js";
 import express from "express";
 
